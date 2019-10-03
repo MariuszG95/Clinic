@@ -1,0 +1,1 @@
+INSERT INTO specializations(specialization) values ('Stomatolog');
