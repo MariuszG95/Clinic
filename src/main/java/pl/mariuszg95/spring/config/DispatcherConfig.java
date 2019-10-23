@@ -12,7 +12,7 @@ public class DispatcherConfig extends AbstractAnnotationConfigDispatcherServletI
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{RootConfig.class, JpaConfig.class};
+        return new Class[]{RootConfig.class, JpaConfig.class, SecurityConfig.class};
     }
 
     @Override

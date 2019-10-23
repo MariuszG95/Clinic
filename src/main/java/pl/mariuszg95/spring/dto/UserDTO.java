@@ -1,32 +1,50 @@
-package pl.mariuszg95.spring.data.model;
+package pl.mariuszg95.spring.dto;
 
-import javax.persistence.*;
+import pl.mariuszg95.spring.data.model.User;
+import pl.mariuszg95.spring.data.model.Visit;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
-public class User {
+public class UserDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String login;
     private String email;
     private String password;
-    @Column(name = "first_name")
     private String firstName;
-    @Column(name = "last_name")
     private String lastName;
-    @Column(name = "birth_date")
     private Date birthDate;
     private boolean active;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_visits",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "visit_id"))
-    private Set<Visit> userVisits = new HashSet<>();
+    private Set<Visit> visits = new HashSet<>();
+
+    public UserDTO(User user) {
+        this.id = user.getId();
+        this.login = user.getLogin();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.birthDate = user.getBirthDate();
+        this.active = user.isActive();
+        this.visits = user.getUserVisits();
+    }
+
+    public User getUser() {
+        User user = new User();
+        user.setId(id);
+        user.setLogin(login);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setBirthDate(birthDate);
+        user.setActive(active);
+        user.setUserVisits(visits);
+
+        return user;
+    }
 
     public Long getId() {
         return id;
@@ -92,11 +110,11 @@ public class User {
         this.active = active;
     }
 
-    public Set<Visit> getUserVisits() {
-        return userVisits;
+    public Set<Visit> getVisits() {
+        return visits;
     }
 
-    public void setUserVisits(Set<Visit> userVisits) {
-        this.userVisits = userVisits;
+    public void setVisits(Set<Visit> visits) {
+        this.visits = visits;
     }
 }

@@ -22,4 +22,36 @@ public class Doctor {
             joinColumns = @JoinColumn(name = "doctor_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> doctorUsers = new HashSet<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getRoom() {
+        return room;
+    }
+
+    public void setRoom(int room) {
+        this.room = room;
+    }
+
+    public Set<User> getDoctorSpecializations() {
+        return doctorSpecializations;
+    }
+
+    public void setDoctorSpecializations(Set<User> doctorSpecializations) {
+        this.doctorSpecializations = doctorSpecializations;
+    }
+
+    public Set<User> getDoctorUsers() {
+        return doctorUsers;
+    }
+
+    public void setDoctorUsers(Set<User> doctorUsers) {
+        this.doctorUsers = doctorUsers;
+    }
 }
