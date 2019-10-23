@@ -23,7 +23,7 @@ public class User {
     private Date birthDate;
     private boolean active;
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_visits",
+    @JoinTable(name = "users_visits",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "visit_id"))
     private Set<Visit> userVisits = new HashSet<>();
