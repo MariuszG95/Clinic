@@ -46,6 +46,21 @@ public class UserDTO {
         return user;
     }
 
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", active=" + active +
+                ", visits=" + visits +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }

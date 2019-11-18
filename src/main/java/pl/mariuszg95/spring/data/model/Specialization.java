@@ -3,13 +3,13 @@ package pl.mariuszg95.spring.data.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "doctors")
+@Table(name = "specializations")
 public class Specialization {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String specialization;
+    private String name;
 
     public Long getId() {
         return id;
@@ -19,11 +19,11 @@ public class Specialization {
         this.id = id;
     }
 
-    public String getSpecialization() {
-        return specialization;
+    public String getName() {
+        return name;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setName(String name) {
+        this.name = name;
     }
 }

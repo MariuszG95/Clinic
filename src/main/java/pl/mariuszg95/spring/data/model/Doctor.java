@@ -13,15 +13,15 @@ public class Doctor {
     private Long id;
     private int room;
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "doctors_users",
+    @JoinTable(name = "doctors_specializations",
             joinColumns = @JoinColumn(name = "doctor_id"),
             inverseJoinColumns = @JoinColumn(name = "specialization_id"))
-    private Set<User> doctorSpecializations = new HashSet<>();
+    private Set<Specialization> specializations = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "doctors_users",
             joinColumns = @JoinColumn(name = "doctor_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> doctorUsers = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -39,19 +39,20 @@ public class Doctor {
         this.room = room;
     }
 
-    public Set<User> getDoctorSpecializations() {
-        return doctorSpecializations;
+    public Set<Specialization> getrSpecializations() {
+        return specializations;
     }
 
-    public void setDoctorSpecializations(Set<User> doctorSpecializations) {
-        this.doctorSpecializations = doctorSpecializations;
+    public void setSpecializations(Set<Specialization> specializations) {
+        this.specializations = specializations;
     }
 
-    public Set<User> getDoctorUsers() {
-        return doctorUsers;
+    public User getUser() {
+        return users.iterator().next();
     }
 
-    public void setDoctorUsers(Set<User> doctorUsers) {
-        this.doctorUsers = doctorUsers;
+    public void setUser(User user) {
+        users.clear();
+        users.add(user);
     }
 }

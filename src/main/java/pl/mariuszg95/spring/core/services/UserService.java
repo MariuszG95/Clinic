@@ -18,6 +18,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public User getById(Long id) {
+        return userRepository.getById(id);
+    }
+
     public User getUser(String login) {
         return userRepository.getByLogin(login);
     }
